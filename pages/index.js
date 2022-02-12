@@ -21,9 +21,8 @@ const App = (props) => {
           videos
         }
       `;
-			businesses = await sanityClient.fetch(query);
+      businesses = await sanityClient.fetch(query);
 		};
-		return businesses;
 	}, []);
 
 	return (
