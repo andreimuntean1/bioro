@@ -6,7 +6,7 @@ const Business = (props) => {
   const { url, name, entrepreneur, shortDesc, videos } = props
 
   return (
-    <Link href={`/${url}`}>
+    <Link href={`/${url}`} passHref>
       <div className="flex justify-between gap-4 bg-lightBackground hover:bg-middleBackground transition-colors duration-300 p-5 md:p-7 rounded-2xl cursor-pointer">
         <div className="flex flex-col">
           <h1 className="font-nunito font-bold text-accent2 text-lg md:text-xl">{name}</h1>
