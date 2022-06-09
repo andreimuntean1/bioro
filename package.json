@@ -9,7 +9,6 @@
   "homepage": "https://bioro.ro",
   "author": "Andrei Muntean <contact@andreimuntean.dev>",
   "license": "MIT",
-
   "scripts": {
     "dev": "next dev",
     "build": "next build",
