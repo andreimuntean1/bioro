@@ -1,30 +1,23 @@
+import { useEffect, useState } from 'react'
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Head from "next/head";
-import { useEffect } from "react";
-import Business from "../components/Business";
-import Header from "../components/Header";
-import { sanityClient } from "../sanity";
+import Business from "components/Business";
+import Header from "components/Header";
+import { collection, getFirestore, onSnapshot, query } from "firebase/firestore";
+import { app } from "database";
 
-const App = (props) => {
-	let { businesses } = props;
-
+const App = () => {
+	const db = getFirestore(app);
+	const [businesses, setBusinesses] = useState([]);
+	
 	useEffect(() => {
-		const getBusinesses = async () => {
-			const query = `
-        *[_type == "business"] {
-          _id,
-          business_name,
-          custom_url,
-          entrepreneur_name,
-          short_description,
-          videos
-        }
-      `;
-      businesses = await sanityClient.fetch(query);
-		};
-	}, []);
-
+		const col = collection(db, 'producatori');
+    const q = query(col);
+    const loadBusinesses = onSnapshot(q, (querySnapshot) => setBusinesses(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
+		return () => loadBusinesses();
+	}, [db])
+	
 	return (
 		<>
 			<Head>
@@ -32,7 +25,7 @@ const App = (props) => {
 			</Head>
 
 			<div className="min-w-full min-h-screen bg-background flex flex-col xl:items-center">
-				<Header isLoggedIn={true} />
+				<Header isLoggedIn={false} />
 				<div className="flex flex-col md:items-center md:mt-6 p-8 max-w-md md:max-w-full xl:max-w-6xl">
 					<h1 className="font-montserrat text-white text-3xl md:text-4xl md:text-center mt-2">
 						Ești ceea ce consumi. Află aici ce mănânci de fapt.
@@ -53,57 +46,21 @@ const App = (props) => {
 						Producătorii locali
 					</h1>
 					<div className="mt-2 md:mt-10 w-full flex flex-row flex-wrap gap-5 md:gap-10">
-						{businesses.map((business) => (
-							<Business
-								key={business._id}
-								url={business.custom_url.current}
-								name={business.business_name}
-								entrepreneur={business.entrepreneur_name}
-								shortDesc={business.short_description}
+						{businesses.map((business) => 
+							<Business 
+								key={business.id} 
+								name={business.name} 
+								entrepreneur={business.entrepreneur} 
+								shortDesc={business.shortDescription} 
+								url={business.url}
 								videos={business.videos.length}
 							/>
-						))}
+						)}
 					</div>
 				</div>
 			</div>
 		</>
 	);
-};
-
-export const getServerSideProps = async () => {
-	const query = `
-    *[_type == "business"] {
-      _id,
-      business_name,
-      custom_url,
-      entrepreneur_name,
-      short_description,
-      videos
-    }
-  `;
-	// const query = `
-	//   *[_type == "business"] {
-	//     _id,
-	//     business_name,
-	//     slug,
-	//     custom_url,
-	//     entreprenour_name,
-	//     location,
-	//     cover_image,
-	//     short_description,
-	//     properties,
-	//     long_description,
-	//     videos
-	//   }
-	// `;
-
-	const businesses = await sanityClient.fetch(query);
-
-	return {
-		props: {
-			businesses,
-		},
-	};
 };
 
 export default App;

@@ -7,7 +7,7 @@ const Header = (props) => {
 
   if(isLoggedIn) {
     return (
-      <div className="sticky top-0 font-montserrat font-bold bg-middleBackground flex justify-between items-center p-4 xl:p- w-full">
+      <div className="sticky top-0 font-montserrat font-bold bg-middleBackground flex justify-between items-center p-4 w-full">
         <Link href="/" passHref><a className="text-white text-lg">bio<span className="text-accent1">RO</span></a></Link>
         <div className="flex gap-3">
           <div className="bg-lightBackground text-accent2 hover:bg-accent2 hover:text-middleBackground transition-colors duration-300 p-3 rounded-full cursor-pointer">
@@ -25,9 +25,9 @@ const Header = (props) => {
     );
   } else {
     return (
-      <div className="font-montserrat font-bold bg-middleBackground flex justify-between items-center p-4">
+      <div className="sticky top-0 font-montserrat font-bold bg-middleBackground flex justify-between items-center p-4 w-full">
         <Link href="/" passHref><a className="text-white text-lg">bio<span className="text-accent1">RO</span></a></Link>
-        <Link href="/creeaza-cont" passHref><a className="text-accent2 bg-lightBackground hover:bg-accent2 hover:text-middleBackground transition-colors duration-300 text-sm py-2 px-4 rounded-full">Creează cont</a></Link>
+        <Link href="/creeaza-cont" passHref><a className="bg-lightBackground text-accent2 hover:bg-accent2 hover:text-middleBackground transition-colors duration-300 px-4 py-2 rounded-full cursor-pointer">Creează cont</a></Link>
       </div>
     );
   }
