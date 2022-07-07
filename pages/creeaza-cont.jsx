@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Head from "next/head";
 import Link from "next/link";
 import Header from "../components/Header";
-import { createUserWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithRedirect, updateProfile } from "firebase/auth";
 import { auth, googleProvider } from "database";
 import { useState } from "react";
 import { useAuth } from "hooks/useAuth";
@@ -27,7 +27,7 @@ const CreeazaCont = () => {
       setError("Se pare că ai uitat să-ți introduci numele")
       return
     }
-    if (!name.split(" ").length > 1) {
+    if (name.split(" ").length < 1) {
       setError("Te rog adaugă atât prenumele cât și numele")
       return
     }
@@ -64,7 +64,7 @@ const CreeazaCont = () => {
 	};
 
 	const loginWithGoogle = () => {
-		signInWithPopup(auth, googleProvider).catch((err) => {
+		signInWithRedirect(auth, googleProvider).catch((err) => {
 			console.log(`Error ${err.code}: ${err.message}`);
 		});
 	};

@@ -1,7 +1,7 @@
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { auth, googleProvider } from "database";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithRedirect } from "firebase/auth";
 import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
@@ -46,7 +46,7 @@ const ConecteazaTe = () => {
 	}
 
 	const loginWithGoogle = () => {
-		signInWithPopup(auth, googleProvider).catch((err) => {
+		signInWithRedirect(auth, googleProvider).catch((err) => {
 			console.log(`Error ${err.code}: ${err.message}`);
 		});
 	};
@@ -104,7 +104,7 @@ const ConecteazaTe = () => {
 							Conectează-te cu Google
 						</button>
 					</div>
-					<div className="mt-24">
+					<div className="mt-24 flex flex-col items-center">
 						<h1 className="font-montserrat text-white text-3xl md:text-4xl md:text-center mt-2 mb-8">
 							Ești nou pe aici?
 						</h1>
