@@ -20,8 +20,7 @@ const ProfilulMeu = () => {
 	const popup = useRef(null);
 
 	const logOut = () => {
-		signOut(auth);
-		router.push("/");
+		router.push("/").then(() => signOut(auth));
 	};
 
 	const updateUser = () => {
