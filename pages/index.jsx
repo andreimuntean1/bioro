@@ -6,17 +6,24 @@ import Business from "components/Business";
 import Header from "components/Header";
 import { collection, getFirestore, onSnapshot, query } from "firebase/firestore";
 import { app } from "database";
+import { useAuth } from 'hooks/useAuth';
+import Loader from 'components/Loader';
 
 const App = () => {
 	const db = getFirestore(app);
+	const { pending, isSignedIn } = useAuth() 
 	const [businesses, setBusinesses] = useState([]);
-	
+
 	useEffect(() => {
 		const col = collection(db, 'producatori');
     const q = query(col);
     const loadBusinesses = onSnapshot(q, (querySnapshot) => setBusinesses(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
 		return () => loadBusinesses();
 	}, [db])
+
+	if(pending) {
+		return <Loader />
+	}
 	
 	return (
 		<>
@@ -25,7 +32,7 @@ const App = () => {
 			</Head>
 
 			<div className="min-w-full min-h-screen bg-background flex flex-col xl:items-center">
-				<Header isLoggedIn={false} />
+				<Header isLoggedIn={isSignedIn} />
 				<div className="flex flex-col md:items-center md:mt-6 p-8 max-w-md md:max-w-full xl:max-w-6xl">
 					<h1 className="font-montserrat text-white text-3xl md:text-4xl md:text-center mt-2">
 						Ești ceea ce consumi. Află aici ce mănânci de fapt.
