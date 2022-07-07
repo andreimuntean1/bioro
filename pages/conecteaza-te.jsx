@@ -65,7 +65,7 @@ const ConecteazaTe = () => {
 				<title>bioRO - conectează-te</title>
 			</Head>
 
-			<div className="min-w-full min-h-screen bg-background flex flex-col xl:items-center">
+			<div className="min-w-full min-h-screen bg-background-default flex flex-col xl:items-center">
 				<Header isLoggedIn={isSignedIn} />
 				<div className="flex flex-col md:items-center md:mt-6 p-8 max-w-md md:max-w-full xl:max-w-6xl">
 					<h1 className="font-montserrat text-white text-3xl md:text-4xl md:text-center mt-2">
@@ -75,19 +75,19 @@ const ConecteazaTe = () => {
 						<input
 							type="text"
 							placeholder="Email"
-							className="outline-none border-none bg-lightBackground text-white font-nunito placeholder:text-opacity-60 focus:text-opacity-100 px-5 py-3 w-full mt-6 rounded-full"
+							className="outline-none border-none bg-lightBackground-default text-white font-nunito placeholder:text-opacity-60 focus:text-opacity-100 px-5 py-3 w-full mt-6 rounded-full"
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
 						/>
 						<input
 							type="password"
 							placeholder="Parola"
-							className="outline-none border-none bg-lightBackground text-white font-nunito placeholder:text-opacity-60 focus:text-opacity-100 px-5 py-3 w-full mt-6 rounded-full"
+							className="outline-none border-none bg-lightBackground-default text-white font-nunito placeholder:text-opacity-60 focus:text-opacity-100 px-5 py-3 w-full mt-6 rounded-full"
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 						/>
             <p className="font-nunito text-red-500 mt-3">{error}</p>
-						<button className="bg-lightBackground font-montserrat text-accent2 hover:bg-accent2 hover:text-middleBackground transition-colors duration-300 px-6 py-2 mt-10 rounded-xl cursor-pointer" onClick={login}>
+						<button className="bg-lightBackground-default font-montserrat text-accent2-default hover:bg-accent2-default hover:text-middleBackground-default transition-colors duration-300 px-6 py-2 mt-10 rounded-xl cursor-pointer" onClick={login}>
 							Conectează-te
 						</button>
 					</form>
@@ -99,7 +99,7 @@ const ConecteazaTe = () => {
 							</h6>
 							<hr className="bg-white w-full" />
 						</div>
-						<button className="bg-lightBackground font-nunito font-semibold text-accent2 hover:bg-accent2 hover:text-middleBackground transition-colors duration-300 px-6 py-2 mt-6 flex items-center rounded-xl cursor-pointer" onClick={loginWithGoogle}>
+						<button className="bg-lightBackground-default font-nunito font-semibold text-accent2-default hover:bg-accent2-default hover:text-middleBackground-default transition-colors duration-300 px-6 py-2 mt-6 flex items-center rounded-xl cursor-pointer" onClick={loginWithGoogle}>
 							<FontAwesomeIcon icon={faGoogle} className="w-5 mr-4" />
 							Conectează-te cu Google
 						</button>
@@ -109,7 +109,7 @@ const ConecteazaTe = () => {
 							Ești nou pe aici?
 						</h1>
 						<Link href="/creeaza-cont" passHref>
-							<a className="bg-lightBackground font-montserrat text-accent2 hover:bg-accent2 hover:text-middleBackground transition-colors duration-300 px-6 py-3 rounded-xl cursor-pointer">
+							<a className="bg-lightBackground-default font-montserrat text-accent2-default hover:bg-accent2-default hover:text-middleBackground-default transition-colors duration-300 px-6 py-3 rounded-xl cursor-pointer">
 								Creează un cont
 							</a>
 						</Link>

@@ -81,27 +81,27 @@ const ProfilulMeu = () => {
 			</Head>
 
 			{popupVisibility && (
-				<div className="w-full min-h-screen absolute top-0 left-0 bg-background bg-opacity-80 flex items-center justify-center z-20">
-					<div className=" bg-middleBackground p-6 m-8 rounded-xl" ref={popup}>
-						<h3 className="font-montserrat text-white text-2xl mb-3">
+				<div className="w-full min-h-screen absolute top-0 left-0 bg-background-default bg-opacity-80 flex items-center justify-center z-20">
+					<div className=" bg-middleBackground-default p-6 m-8 rounded-xl" ref={popup}>
+						<h3 className="font-montserrat text-white text-2xl mb-5">
 							Editează datele
 						</h3>
 						<form className="flex flex-col gap-4">
 							<input
 								type="text"
-								className="outline-none border-none bg-lightBackground text-white font-nunito placeholder:text-opacity-60 focus:text-opacity-100 px-5 py-2 w-full rounded-full"
+								className="outline-none border-none bg-lightBackground-default text-white font-nunito placeholder:text-opacity-60 focus:text-opacity-100 px-5 py-2 w-full rounded-full"
 								defaultValue={name}
 								onChange={(e) => setName(e.target.value)}
 							/>
 							<input
 								type="text"
-								className="outline-none border-none bg-lightBackground text-white font-nunito placeholder:text-opacity-60 focus:text-opacity-100 px-5 py-2 w-full rounded-full"
+								className="outline-none border-none bg-lightBackground-default text-white font-nunito placeholder:text-opacity-60 focus:text-opacity-100 px-5 py-2 w-full rounded-full"
 								defaultValue={email}
 								onChange={(e) => setEmail(e.target.value)}
 							/>
 							<p className={`font-nunito text-red-500 ${error.length !== 0 ? 'mt-3' : '`'}`}>{error}</p>
 							<button
-								className="bg-lightBackground font-montserrat text-accent2 hover:bg-accent2 hover:text-middleBackground transition-colors duration-300 px-6 py-2 mt-2 max-w-fit rounded-xl cursor-pointer"
+								className="bg-lightBackground-default font-montserrat text-accent2-default hover:bg-accent2-default hover:text-middleBackground-default transition-colors duration-300 px-6 py-2 mt-2 max-w-fit rounded-xl cursor-pointer"
 								onClick={updateUser}
 							>
 								Actualizează
@@ -111,14 +111,14 @@ const ProfilulMeu = () => {
 				</div>
 			)}
 
-			<div className="min-w-full min-h-screen bg-background flex flex-col xl:items-center">
+			<div className="min-w-full min-h-screen bg-background-default flex flex-col xl:items-center">
 				<Header isLoggedIn={isSignedIn} />
 				<div className="flex flex-col items-center md:mt-8 p-8 max-w-md md:max-w-full xl:max-w-6xl">
 					<Image
 						src={
 							user.photoURL
 								? user.photoURL
-								: `https://ui-avatars.com/api/?background=156271&color=27FB6B&?size=150&name=${
+								: `https://ui-avatars.com/api/?background-default=156271&color=27FB6B&?size=150&name=${
 										user.displayName.split(" ")[0]
 								  }+${
 										user.displayName.split(" ")[1] || ""
@@ -136,7 +136,7 @@ const ProfilulMeu = () => {
 					<div className="flex flex-col gap-6 mt-10">
 						<button
 							onClick={() => setPopupVisibility(!popupVisibility)}
-							className="bg-lightBackground font-montserrat text-accent2 hover:bg-middleBackground transition-colors duration-300 px-6 py-2 rounded-full cursor-pointer"
+							className="bg-lightBackground-default font-montserrat text-accent2-default hover:bg-middleBackground-default transition-colors duration-300 px-6 py-2 rounded-full cursor-pointer"
 						>
 							Editează
 						</button>

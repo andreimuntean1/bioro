@@ -4,13 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Head from "next/head";
 import Business from "components/Business";
 import Header from "components/Header";
-import { collection, getFirestore, onSnapshot, query } from "firebase/firestore";
-import { app } from "database";
+import { collection, onSnapshot, query } from "firebase/firestore";
 import { useAuth } from 'hooks/useAuth';
 import Loader from 'components/Loader';
+import { db } from 'database';
 
 const App = () => {
-	const db = getFirestore(app);
 	const { pending, isSignedIn } = useAuth() 
 	const [businesses, setBusinesses] = useState([]);
 
@@ -19,7 +18,7 @@ const App = () => {
     const q = query(col);
     const loadBusinesses = onSnapshot(q, (querySnapshot) => setBusinesses(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))));
 		return () => loadBusinesses();
-	}, [db])
+	}, [])
 
 	if(pending) {
 		return <Loader />
@@ -31,7 +30,7 @@ const App = () => {
 				<title>bioRO - Află ce mănânci cu adevărat</title>
 			</Head>
 
-			<div className="min-w-full min-h-screen bg-background flex flex-col xl:items-center">
+			<div className="min-w-full min-h-screen bg-background-default flex flex-col xl:items-center">
 				<Header isLoggedIn={isSignedIn} />
 				<div className="flex flex-col md:items-center md:mt-6 p-8 max-w-md md:max-w-full xl:max-w-6xl">
 					<h1 className="font-montserrat text-white text-3xl md:text-4xl md:text-center mt-2">
@@ -41,9 +40,9 @@ const App = () => {
 						<input
 							type="text"
 							placeholder="Caută un produs sau o firmă"
-							className="outline-none border-none bg-lightBackground text-white font-nunito placeholder:text-opacity-60 focus:text-opacity-100 px-5 py-2 min-w-full rounded-full"
+							className="outline-none border-none bg-lightBackground-default text-white font-nunito placeholder:text-opacity-60 focus:text-opacity-100 px-5 py-2 min-w-full rounded-full"
 						/>
-						<button className="bg-lightBackground p-3 text-accent2 hover:bg-accent2 hover:text-lightBackground transition-colors duration-300 rounded-full">
+						<button className="bg-lightBackground-default p-3 text-accent2-default hover:bg-accent2-default hover:text-lightBackground-default transition-colors duration-300 rounded-full">
 							<FontAwesomeIcon icon={faSearch} className="w-4" />
 						</button>
 					</div>

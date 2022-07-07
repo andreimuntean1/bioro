@@ -7,20 +7,20 @@ const Header = (props) => {
 
 	if (isLoggedIn) {
 		return (
-			<div className="sticky top-0 font-montserrat font-bold bg-middleBackground flex justify-between items-center p-4 w-full">
+			<div className="sticky top-0 font-montserrat font-bold bg-middleBackground-default flex justify-between items-center p-4 w-full">
 				<Link href="/" passHref>
 					<a className="text-white text-lg">
-						bio<span className="text-accent1">RO</span>
+						bio<span className="text-accent1-default">RO</span>
 					</a>
 				</Link>
 				<div className="flex gap-3">
 					<Link href="/scaneaza-qr" passHref>
-						<div className="bg-lightBackground text-accent2 hover:bg-accent2 hover:text-middleBackground transition-colors duration-300 p-3 rounded-full cursor-pointer">
+						<div className="bg-lightBackground-default text-accent2-default hover:bg-accent2-default hover:text-middleBackground-default transition-colors duration-300 p-3 rounded-full cursor-pointer">
 							<FontAwesomeIcon icon={faQrcode} className="w-4" />
 						</div>
 					</Link>
 					<Link href="/profilul-meu" passHref>
-						<div className="bg-lightBackground text-accent2 hover:bg-accent2 hover:text-middleBackground transition-colors duration-300 p-3 rounded-full cursor-pointer">
+						<div className="bg-lightBackground-default text-accent2-default hover:bg-accent2-default hover:text-middleBackground-default transition-colors duration-300 p-3 rounded-full cursor-pointer">
 							<FontAwesomeIcon icon={faUser} className="w-4" />
 						</div>
 					</Link>
@@ -29,10 +29,10 @@ const Header = (props) => {
 		);
 	} else {
 		return (
-			<div className="sticky top-0 font-montserrat font-bold bg-middleBackground flex justify-between items-center p-4 w-full">
+			<div className="sticky top-0 font-montserrat font-bold bg-middleBackground-default flex justify-between items-center p-4 w-full">
 				<Link href="/" passHref>
 					<a className="text-white text-lg">
-						bio<span className="text-accent1">RO</span>
+						bio<span className="text-accent1-default">RO</span>
 					</a>
 				</Link>
 				<Link
@@ -45,7 +45,7 @@ const Header = (props) => {
 					}
 					passHref
 				>
-					<a className="bg-lightBackground text-accent2 hover:bg-accent2 hover:text-middleBackground transition-colors duration-300 px-4 py-2 rounded-full cursor-pointer">
+					<a className="bg-lightBackground-default text-accent2-default hover:bg-accent2-default hover:text-middleBackground-default transition-colors duration-300 px-4 py-2 rounded-full cursor-pointer">
 						{buttonText || "Creează cont"}
 					</a>
 				</Link>
