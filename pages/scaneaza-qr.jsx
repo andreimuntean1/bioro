@@ -1,4 +1,4 @@
-const scaneazaQr = () => {
+const ScaneazaQr = () => {
   return (
     <div>
       
@@ -6,4 +6,4 @@ const scaneazaQr = () => {
   );
 }
 
-export default scaneazaQr;
+export default ScaneazaQr;
