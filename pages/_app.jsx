@@ -6,6 +6,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <style>@import url(&apos;https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Nunito:wght@400;600;700&display=swap&apos;);</style>
+        <meta name='theme-color' content='#004754' />
       </Head>
       
       <Component {...pageProps} />
